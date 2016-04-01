@@ -1,0 +1,31 @@
+<h1>Your Cart</h1>
+<br>
+
+<% if @cart.empty? %>
+    <p>Your cart is currently empty.</p>
+<% else %>
+<%= link_to 'Empty Your Cart', cart_clear_path %> |
+<%= link_to "Checkout", 'https://www.paypal.com/ie/webapps/mpp/home' %>
+<% end %>
+
+<br><br><br>
+
+<% total = 0 %>
+
+<ul>
+<% @cart.each do | id, quantity | %>
+    <% bike = Bike.find_by_id(id) %>  <!-- this takes  from model database when we created scaffold for product -->
+    
+    <li>
+        <%= link_to bike.name, bike %>
+        <p> Description: <%= bike.description %></p>
+        <p> Price: <%= number_to_currency(bike.price, :unit => '€') %> </p>
+        <p> Quantity: <%= quantity %></p>
+    </li>
+    <% total += quantity * bike.price %>
+    
+<% end %>
+
+<br><br>
+<p><b> Total: <%= number_to_currency(total, :unit => '€') %> </b></p>
+</ul>
