@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
+  
+  resources :bikes
+  resources :rentals
   resources :profiles
-
   devise_for :users
   
   get'/cart'=>'cart#index'
   get '/cart/clear' => 'cart#clearCart'
   get '/cart/:id' => 'cart#add' 
+  #get '/cart' => 'cart#add'
 
-  resources :bikes
   
   get '/signedinuserprofile' => 'profiles#signedinuserprofile'
 

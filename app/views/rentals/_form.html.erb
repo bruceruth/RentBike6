@@ -1,0 +1,49 @@
+
+
+  <%= form_for(@rental) do |f| %>
+    <% if @rental.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@rental.errors.count, "error") %> prohibited this rental from being saved:</h2>
+  
+        <ul>
+        <% @rental.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    
+    <br><br>
+    
+    <h2>Date of Bike Rental:</h2><br>
+    <div class="field">
+      <%= f.label :date %><br>
+      <%= f.date_select :date %>
+    </div>
+    <br>
+    
+     <h2> Type of bike:</h2><br>
+     <div class="field">
+       <%= f.label "Type of Bike:" %> <br>
+      <%= f.collection_select :bikes, Bike.order(:name),:id,:name, include_blank: false %>
+      </div>
+      <br>
+      
+    
+      <h2> No. of Days:</h2><br>
+      <div class="field">
+        <%= f.label :rentalDuration %><br>
+        <%= f.number_field :rentalDuration %>
+      </div>
+    <br>
+    
+
+     <!-- <td><a href="/cart/<%= @rental.id %>">  Add To Cart   </a></td> -->
+    
+  <!--<%= submit_tag "Submit" %><br> -->
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+ 
+<% end %>

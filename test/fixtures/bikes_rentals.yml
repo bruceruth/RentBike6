@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bikes_id: 1
+  rentals_id: 1
+
+two:
+  bikes_id: 1
+  rentals_id: 1

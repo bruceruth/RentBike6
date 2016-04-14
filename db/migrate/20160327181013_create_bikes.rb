@@ -1,7 +1,7 @@
 class CreateBikes < ActiveRecord::Migration
   def change
     create_table :bikes do |t|
-      t.string :name
+      t.string :name, :null => false
       t.text :description
       t.string :image_url
       t.decimal :price

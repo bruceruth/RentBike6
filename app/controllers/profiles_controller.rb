@@ -1,3 +1,5 @@
+require 'my_logger'
+
 class ProfilesController < ApplicationController
   before_filter :authenticate_user!
   before_filter :ensure_admin, :only => [:edit, :destroy]
@@ -49,6 +51,11 @@ class ProfilesController < ApplicationController
       @profile = Profile.new(profile_params)
       @profile.save
       respond_with(@profile)
+      
+      #retrieve the instance/object of MyLogger class
+      logger = MyLogger.instance
+      logger.logInformation("A new profile has been created" + @profile.firstname + @profile.lastname)
+      
     end
   
     def update

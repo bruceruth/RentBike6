@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160328171212) do
+ActiveRecord::Schema.define(version: 20160414115925) do
+
+  create_table "bike_rentals", force: true do |t|
+    t.integer  "bike_id"
+    t.integer  "rentals_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "bikes", force: true do |t|
     t.string   "name"
@@ -21,6 +28,14 @@ ActiveRecord::Schema.define(version: 20160328171212) do
     t.string   "subcategory"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "bike_type"
+  end
+
+  create_table "bikes_rentals", force: true do |t|
+    t.integer  "bikes_id",   null: false
+    t.integer  "rentals_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "profiles", force: true do |t|
@@ -35,6 +50,15 @@ ActiveRecord::Schema.define(version: 20160328171212) do
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
+
+  create_table "rentals", force: true do |t|
+    t.date     "date"
+    t.string   "biketype"
+    t.integer  "rentalDuration"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.decimal  "cost"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false

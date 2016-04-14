@@ -12,6 +12,8 @@
 
 <% total = 0 %>
 
+
+
 <ul>
 <% @cart.each do | id, quantity | %>
     <% bike = Bike.find_by_id(id) %>  <!-- this takes  from model database when we created scaffold for product -->
@@ -21,11 +23,15 @@
         <p> Description: <%= bike.description %></p>
         <p> Price: <%= number_to_currency(bike.price, :unit => '€') %> </p>
         <p> Quantity: <%= quantity %></p>
-    </li>
-    <% total += quantity * bike.price %>
+   
     
-<% end %>
+  
+    <% total += quantity * bike.price %>
 
 <br><br>
 <p><b> Total: <%= number_to_currency(total, :unit => '€') %> </b></p>
 </ul>
+
+    
+<% end %>
+ 

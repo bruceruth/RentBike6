@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'rails-observers'
 gem 'arel', '6.0.0.beta2'
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

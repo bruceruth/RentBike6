@@ -13,14 +13,19 @@
 <nav id="nav">
   <div id="page_nav">  
     <%= link_to "Home", root_path %> 
-    <%= link_to "Bikes", bikes_path %>
-    <%= link_to "Make a Rental!", new_bike_path %>
+    <%= link_to 'New Rental', new_rental_path %>
     <%= link_to "Contact", page_contact_path %>
+    <! -- LIMIT THE VIEW OF THESE LINKS FOR THE ADMIN ONLY -->
+    <%= link_to "View Rentals",rentals_path %>
+    <%= link_to "View Bikes", bikes_path %>
+
+
     
 </div>
 
 <div id=sign_in>
   <% if user_signed_in? %> 
+
       <%= link_to "View Your Cart", cart_path %>
       <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
     <% else %>

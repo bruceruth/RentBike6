@@ -1,8 +1,5 @@
 class CartController < ApplicationController
 
-before_action :authenticate_user!, except: [:index]
-
-  
   def add
     id = params[:id]
       #if the cart has already been created, use the existing cart, else create new cart

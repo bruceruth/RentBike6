@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+<h1>Your rental</h1><br><br><br>
+<p>
+  <strong>Date:</strong>
+  <%= @rental.date %>
+</p>
+
+<p>
+  <strong>Bike Type:</strong>
+  <%= @rental.biketype %>
+</p>
+
+<p>
+  <strong>Cost:</strong>
+  <% @rental.cost %>
+  <% @total = @rental.cost * @rental.rentalDuration %>
+  <%= @total %>
+</p>
+
+<!-- <%= link_to 'Edit', edit_rental_path(@rental) %> -->
+<%= link_to 'Back', new_rental_path %>
