@@ -69,6 +69,7 @@ class BikesController < ApplicationController
   # DELETE /bikes/1
   # DELETE /bikes/1.json
   def destroy
+    
     @bike.destroy
     respond_to do |format|
       format.html { redirect_to bikes_url, notice: 'Bike was successfully destroyed.' }
