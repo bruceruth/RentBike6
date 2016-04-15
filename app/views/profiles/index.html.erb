@@ -1,7 +1,15 @@
 <% if current_user.admin? %>
-  <p id="notice"><%= notice %></p>
-  
+  <p id="notice"><%= notice %></p><br><br>
+
+<%= form_tag(profiles_path, :method => "get") do %>
+  <%= text_field_tag :search, nil, :placeholder => "First name" %>
+  <%= text_field_tag :search, nil, :placeholder => "Last name" %>
+  <%= submit_tag "Search" %>
+<% end %>
+<br><br>
+
   <h1>Listing Profiles</h1>
+  <br><br>
   
   <table>
     <thead>

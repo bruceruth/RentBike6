@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   resources :profiles
   devise_for :users
   
+#  resources :users do
+#    resources :rentals
+#  end
+
+  
   get'/cart'=>'cart#index'
   get '/cart/clear' => 'cart#clearCart'
   get '/cart/:id' => 'cart#add' 

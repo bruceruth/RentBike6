@@ -1,6 +1,8 @@
 class RentalsController < ApplicationController
   before_action :set_rental, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index]
+  before_filter :authenticate_user!
+  before_filter :ensure_admin, :only => [:edit, :destroy]
 
 
   respond_to :html
@@ -20,6 +22,12 @@ class RentalsController < ApplicationController
 #      redirect_to new_rental_path
 #    end
 #  en0d
+
+  def ensure_admin
+    unless current_user && current_user.admin?
+      render :text => "Access Error Message", :status => :unauthorized
+    end
+  end
   
   def create
     @rental = Rental.new(rental_params)
