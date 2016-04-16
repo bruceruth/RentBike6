@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160415195954) do
+ActiveRecord::Schema.define(version: 20160416192813) do
 
   create_table "bike_rentals", force: true do |t|
     t.integer  "bike_id"
@@ -29,7 +29,11 @@ ActiveRecord::Schema.define(version: 20160415195954) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "bike_type"
+    t.integer  "rental_id"
+    t.integer  "rentals_id"
   end
+
+  add_index "bikes", ["rentals_id"], name: "index_bikes_on_rentals_id"
 
   create_table "bikes_rentals", force: true do |t|
     t.integer  "bikes_id",   null: false
